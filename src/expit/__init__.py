@@ -4,7 +4,11 @@ import wonderparse as _wp
 
 
 def function(x:float):
-    return 1 / (1 + _math.exp(-x))
+    try:
+        p = _math.exp(-x)
+    except OverflowError:
+        p = float('+inf')
+    return 1 / (1 + p)
 
 def main(args=None):
     _wp.easymode.simple_run(
