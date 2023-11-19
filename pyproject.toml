@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "expit"
-version = "0.0.2"
+version = "1.0.0"
 description = "The expit function."
 readme = "README.rst"
 authors = [
@@ -27,4 +27,5 @@ requires-python = ">=3.11"
 file = "LICENSE.txt"
 
 [project.urls]
-source = "https://github.com/johannes-programming/expit"
+Source = "https://github.com/johannes-programming/expit"
+Download = "https://pypi.org/project/expit/#files"
