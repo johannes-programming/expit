@@ -29,7 +29,7 @@ Links
 
 Credits
 -------
-- Author: Johannes Programming
-- Email: johannes-programming@posteo.org
+- Author: Johannes
+- Email: johannes-programming@mailfence.com
 
 Thank you for using expit!
