@@ -6,11 +6,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "expit"
-version = "1.0.0"
+version = "1.0.1"
 description = "The expit function."
 readme = "README.rst"
 authors = [
-    { name = "Johannes Programming", email = "johannes-programming@posteo.org" },
+    { name = "Johannes Programming", email = "johannes-programming@mailfence.com" },
 ]
 classifiers = [
     "License :: OSI Approved :: MIT License",
