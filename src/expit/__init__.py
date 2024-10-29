@@ -1,6 +1,6 @@
 import math as _math
 
-import wonderparse as _wp
+import click as _click
 
 
 def function(x: float):
@@ -11,12 +11,13 @@ def function(x: float):
     return 1 / (1 + p)
 
 
-def main(args=None):
-    _wp.easymode.simple_run(
-        args=args,
-        program_object=function,
-        prog="expit",
-    )
+@_click.command(add_help_option=False)
+@_click.help_option("-h", "--help")
+@_click.version_option(None, "-V", "--version")
+@_click.argument("x", type=float)
+def main(x: float):
+    """applies the expit function to x"""
+    _click.echo(function(x))
 
 
 if __name__ == "__main__":
