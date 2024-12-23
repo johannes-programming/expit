@@ -6,7 +6,8 @@ import preparse
 __all__ = ["function", "main"]
 
 
-def function(x: float):
+def function(x: float) -> float:
+    "The expit function."
     try:
         p = math.exp(-x)
     except OverflowError:
@@ -19,6 +20,6 @@ def function(x: float):
 @click.help_option("-h", "--help")
 @click.version_option(None, "-V", "--version")
 @click.argument("x", type=float)
-def main(x: float):
-    """applies the expit function to x"""
+def main(x: float) -> None:
+    "Apply the expit function to x."
     click.echo(function(x))
