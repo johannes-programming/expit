@@ -27,7 +27,7 @@ keywords = []
 name = "expit"
 readme = "README.rst"
 requires-python = ">=3.11"
-version = "1.0.10+local"
+version = "1.0.10+local.1"
 
 [project.license]
 file = "LICENSE.txt"
