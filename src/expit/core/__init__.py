@@ -7,7 +7,7 @@ __all__ = ["function", "main"]
 
 
 def function(x: float) -> float:
-    "The expit function."
+    "This function is the logistical sigmoid, i.e. the expit function."
     try:
         p = math.exp(-x)
     except OverflowError:
@@ -21,5 +21,5 @@ def function(x: float) -> float:
 @click.version_option(None, "-V", "--version")
 @click.argument("x", type=float)
 def main(x: float) -> None:
-    "Apply the expit function to x."
+    "This command applies the expit function to x."
     click.echo(function(x))
