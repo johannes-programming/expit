@@ -1,56 +1,22 @@
-import math
 import sys
 import unittest
-from unittest.mock import patch
+from typing import *
 
 from click.testing import CliRunner
 
-# Import the script's components
 from expit.core import function, main
 
-
-class TestFunction(unittest.TestCase):
-    def test_function_regular_values(self):
-        # Test regular values of x
-        self.assertAlmostEqual(function(0), 0.5)
-        self.assertAlmostEqual(function(1), 1 / (1 + math.exp(-1)), places=5)
-        self.assertAlmostEqual(function(-1), 1 / (1 + math.exp(1)), places=5)
-
-    def test_function_large_positive(self):
-        # Test large positive values of x (result should approach 1)
-        self.assertAlmostEqual(function(100), 1.0, places=5)
-        self.assertAlmostEqual(function(1000), 1.0, places=5)
-
-    def test_function_large_negative(self):
-        # Test large negative values of x (result should approach 0)
-        self.assertAlmostEqual(function(-100), 0.0, places=5)
-        self.assertAlmostEqual(function(-1000), 0.0, places=5)
-
-    def test_function_overflow(self):
-        # Test overflow values to ensure they are handled without errors
-        self.assertAlmostEqual(function(sys.float_info.max), 1.0, places=5)
-        self.assertAlmostEqual(function(-sys.float_info.max), 0.0, places=5)
-
-    def test_function_infinity(self):
-        # Test positive and negative infinity inputs
-        self.assertEqual(function(float("inf")), 1.0)
-        self.assertEqual(function(float("-inf")), 0.0)
-
-    def test_function_nan(self):
-        # Test NaN input; behavior may vary, but we can ensure it doesn't throw an error
-        result = function(float("nan"))
-        self.assertTrue(
-            math.isnan(result) or result in [0.0, 1.0]
-        )  # Depending on interpretation, could be NaN, 0, or 1
+__all__ = ["TestMainCommand"]
 
 
 class TestMainCommand(unittest.TestCase):
-    def setUp(self):
+    def setUp(self: Self) -> None:
         # Set up CliRunner for Click command-line testing
         self.runner = CliRunner()
 
-    def test_main_help_option(self):
+    def test_main_help_option(self: Self) -> None:
         # Test help option (-h, --help) to ensure it displays usage information
+        result: Any
         result = self.runner.invoke(main, ["--help"])
         self.assertEqual(result.exit_code, 0)
         self.assertIn("Usage", result.output)
@@ -61,8 +27,9 @@ class TestMainCommand(unittest.TestCase):
         self.assertIn("Usage", result.output)
         self.assertIn("applies the expit function to x", result.output)
 
-    def test_main_version_option(self):
+    def test_main_version_option(self: Self) -> None:
         # Test version option (-V, --version) to check version output
+        result: Any
         result = self.runner.invoke(main, ["--version"])
         self.assertEqual(result.exit_code, 0)
         self.assertIn("version", result.output.lower())
@@ -71,8 +38,10 @@ class TestMainCommand(unittest.TestCase):
         self.assertEqual(result.exit_code, 0)
         self.assertIn("version", result.output.lower())
 
-    def test_main_valid_input(self):
+    def test_main_valid_input(self: Self) -> None:
         # Test main function with a valid float input, checking output
+        expected_output: str
+        result: Any
         result = self.runner.invoke(main, ["1"])
         expected_output = f"{function(1)}\n"
         self.assertEqual(result.exit_code, 0)
@@ -83,8 +52,9 @@ class TestMainCommand(unittest.TestCase):
         self.assertEqual(result.exit_code, 0)
         self.assertEqual(result.output, expected_output)
 
-    def test_main_edge_case(self):
+    def test_main_edge_case(self: Self) -> None:
         # Test main function with extreme float inputs
+        result: Any
         result = self.runner.invoke(main, [str(sys.float_info.max)])
         self.assertEqual(result.exit_code, 0)
         self.assertEqual(result.output, f"{function(sys.float_info.max)}\n")
@@ -93,8 +63,9 @@ class TestMainCommand(unittest.TestCase):
         self.assertEqual(result.exit_code, 0)
         self.assertEqual(result.output, f"{function(-sys.float_info.max)}\n")
 
-    def test_main_invalid_input(self):
+    def test_main_invalid_input(self: Self) -> None:
         # Test main function with invalid input, expecting an error
+        result: Any
         result = self.runner.invoke(main, ["abc"])
         self.assertNotEqual(result.exit_code, 0)
         self.assertIn("Invalid value for 'X'", result.output)
