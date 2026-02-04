@@ -8,6 +8,7 @@ __all__ = ["function", "main"]
 
 def function(x: float) -> float:
     "This function is the logistical sigmoid, i.e. the expit function."
+    p: float
     try:
         p = math.exp(-x)
     except OverflowError:
