@@ -12,7 +12,7 @@ __all__ = ["TestMainCommand"]
 class TestMainCommand(unittest.TestCase):
     def setUp(self: Self) -> None:
         # Set up CliRunner for Click command-line testing
-        self.runner = CliRunner()
+        self.runner: Any = CliRunner()
 
     def test_main_help_option(self: Self) -> None:
         # Test help option (-h, --help) to ensure it displays usage information

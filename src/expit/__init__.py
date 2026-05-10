@@ -1,5 +1,4 @@
-from expit.core import *
-from expit.tests import *
+from expit.core import function, main
 
 if __name__ == "__main__":
     main()
