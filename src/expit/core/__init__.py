@@ -6,7 +6,7 @@ import preparse
 __all__ = ["function", "main"]
 
 
-def function(x: float) -> float:
+def function(x: float, /) -> float:
     "This function is the logistical sigmoid, i.e. the expit function."
     p: float
     try:
