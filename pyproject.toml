@@ -19,7 +19,7 @@ classifiers = [
 ]
 dependencies = [
     "click>=8.2,<9",
-    "preparse>=1.0,<2",
+    "preparse>=1.1,<2",
 ]
 description = "This project provides an implementation of the expit function."
 keywords = []
@@ -30,7 +30,7 @@ license-files = [
 name = "expit"
 readme = "README.rst"
 requires-python = ">=3.11"
-version = "1.1.1"
+version = "1.1.2"
 
 [project.urls]
 Download = "https://pypi.org/project/expit/#files"
@@ -44,10 +44,3 @@ files = [
 ]
 python_version = "3.11"
 strict = false
-
-[[tool.mypy.overrides]]
-module = [
-    "preparse",
-    "preparse.*",
-]
-ignore_missing_imports = true
