@@ -1,2 +1,2 @@
 recursive-include docs *.rst
-recursive-include src/expit *.toml
+recursive-include src *.toml
