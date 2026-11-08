@@ -10,7 +10,7 @@ from importlib import metadata
 
 
 def function(x: float, /) -> float:
-    "This function is the logistical sigmoid, i.e. the expit function."
+    "This function is the logistic sigmoid, i.e. the expit function."
     p: float
     try:
         p = math.exp(-x)
