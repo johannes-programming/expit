@@ -6,4 +6,10 @@ import sys
 
 import expit.tests
 
-sys.exit(1 - expit.tests.test().wasSuccessful())
+
+def main() -> int:
+    return 1 - expit.tests.test().wasSuccessful()
+
+
+if __name__ == "__main__":
+    sys.exit(main())
