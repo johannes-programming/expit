@@ -24,17 +24,17 @@ def main(args: abc.Iterable[str] | None = None) -> int:
     space: argparse.Namespace
     try:
         space = parse_args(args)
+        run(space.x)
     except SystemExit as exit:
         if isinstance(exit.code, int):
-            return exit.code
+            return int(exit.code)
         else:
             return int(bool(exit.code))
-    try:
-        run(space.x)
-    except Exception as exc:
+    except BaseException as exc:
         logging.exception(exc)
         return 1
-    return 0
+    else:
+        return 0
 
 
 def parse_args(args: abc.Iterable[str] | None = None) -> argparse.Namespace:
